@@ -1,8 +1,21 @@
-import { View, Text, SafeAreaView, Image, TouchableOpacity, Animated } from 'react-native'
+import { View, Text, SafeAreaView, Image, TouchableOpacity, Animated , ScrollView, FlatList} from 'react-native'
 import React, { useRef, useState } from 'react'
 import profile from '../assets/images/profile.png'
 import menu from '../assets/images/menu.png'
 import close from '../assets/images/close.png'
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import cake1 from '../assets/images/cake1.jpg'
+import cake2 from '../assets/images/cake2.jpg'
+import cake3 from '../assets/images/cake3.jpg'
+import cake4 from '../assets/images/cake4.jpg'
+import cake5 from '../assets/images/cake5.png'
+import cake6 from '../assets/images/cake6.png'
+
+
+
+
+
 
 const HomeScreen = ({navigation}) => {
     const [currentTab, setCurruntTab] = useState("Home");
@@ -179,31 +192,686 @@ const HomeScreen = ({navigation}) => {
 
 
  {/* -------------------Home page content ---------------------*/}
+             
 
-            <Text style={{
-                    fontSize:30,
-                    fontWeight:'bold',
-                    color:'black',
-                    paddingTop:20
-                }}>{currentTab}</Text>
+                <View style ={{
+                    justifyContent : 'center',
+                    alignItems : 'center'
+                }}>
+                                <Text style={{
+                                    fontSize:30,
+                                    fontWeight:'bold',
+                                    color:'black',
+                                    paddingTop:20,
+                                    paddingBottom : 10
+                                }}>{currentTab}</Text>
+                </View>
+                
+                <TouchableOpacity style = {{
+                    backgroundColor : '#DDDDDD',
+                    padding : "4%",
+                    borderRadius : 15
+                }}>
+                        <View style = {{
+                            flexDirection : 'row',
+                            alignItems : 'baseline'
+                        }}>
+                             <Icon name="search" size={22} color="#000000" />
+                             <Text style ={{
+                                fontWeight : '600',
+                                color : '#898B9A',
+                                fontSize : 20,
+                                paddingLeft : 20,
+                                paddingRight : 210
+                             }}>Search</Text>
+                               <Icon name="filter" size={22} color="#000000" />
+                        </View>
 
-                <Image source={profile} style={{
-                    width:'100%',
-                    height:300,
-                    borderRadius:15,
-                    marginTop:20
-                }}></Image>
-                <Text style={{
-                    fontSize:20,
-                    fontWeight:'bold',
-                    paddingTop:15,
-                    paddingBottom:5,
-                    color:'#eb5406'
-                }}>Amecia de Rune</Text>
-
-                <Text style={{
     
-                }}>Amicia de Rune is the older sister of Hugo de Rune, compelled to flee for their lives through the pestilent countryside of France when the Inquisition raids ...</Text>
+                </TouchableOpacity>
+
+                {/* scroll view div */}
+
+                <View style = {{
+                    height : '67%',
+                    marginTop : '2%',
+                    marginBottom : '2%'
+                }}>
+
+                <ScrollView style = {{
+                    borderRadius : 15,
+                    padding : 10
+                }}>
+                    <Text style = {{
+                        fontSize : 18,
+                        fontWeight : '600',
+                        color : '#FF6C44'
+                    }}>
+                        DELIVERY TO 
+                    </Text>
+
+                    <View style ={{
+                        flexDirection : 'row',
+                        alignItems : 'baseline'
+                    }}>
+                    <Text style = {{
+                        fontSize : 17,
+                        fontWeight : '600',
+                        color : '#000000',
+                        paddingRight : 5
+                    }}>
+                        64/1 Kegalle Road , Alawathura
+                    </Text>
+                    <Icon name="arrow-down" size={15} color="#000000" />
+                    </View>
+
+
+
+                    <ScrollView
+                        horizontal={true}
+                        style = {{
+                            marginTop : 10
+                        }}
+                        >
+
+                  {/* card View  1*/}
+
+                  <TouchableOpacity style = {{
+                                        marginTop : 10,
+                                        padding : 20,
+                                        backgroundColor : "#DDDDDD",
+                                        borderRadius : 15,
+                                        marginRight : 20,
+                  }}>
+
+                                <View style = {{
+                                        flexDirection : 'row',
+                                        alignItems : 'baseline',
+                                        alignItems : 'center'
+                                    }}>
+                                                <Text style = {{
+                                                    fontSize : 19,
+                                                    fontWeight : '600',
+                                                    
+                                                }}>
+                                                    Chocolate Cup Cake
+                                                </Text>
+
+                                                <Image source={cake5} style={{
+                                                    width:60,
+                                                    height:60,
+                                                    borderRadius: 50,
+                                                    marginLeft : 20,
+                                                    backgroundColor : 'white'
+                                                    }}
+                                                ></Image>
+                                    </View>
+
+                  </TouchableOpacity>
+
+
+                  <TouchableOpacity style = {{
+                                        marginTop : 10,
+                                        padding : 20,
+                                        backgroundColor : "#DDDDDD",
+                                        borderRadius : 15,
+                                        marginRight : 20,
+                  }}>
+
+                                <View style = {{
+                                        flexDirection : 'row',
+                                        alignItems : 'baseline',
+                                        alignItems : 'center'
+                                    }}>
+                                                <Text style = {{
+                                                    fontSize : 19,
+                                                    fontWeight : '600',
+                                                    
+                                                }}>
+                                                    Vanilla Cup Cake
+                                                </Text>
+
+                                                <Image source={cake6} style={{
+                                                    width:60,
+                                                    height:60,
+                                                    borderRadius: 50,
+                                                    marginLeft : 20
+                                                    }}
+                                                ></Image>
+                                    </View>
+                                    
+
+                  </TouchableOpacity>
+
+                    </ScrollView>
+
+                    {/* end of the inner horizontal ScrollView */}
+
+
+                    <View style ={{
+                        flexDirection : 'row',
+                        alignItems : 'baseline',
+                        marginTop : 20
+                    }}>
+                    <Text style = {{
+                        fontSize : 17,
+                        fontWeight : '600',
+                        color : '#000000',
+                        paddingRight : '40%'
+                    }}>
+                        Popular Near You
+                    </Text>
+
+                                  <TouchableOpacity>
+                                  <Text style = {{
+                                            fontSize : 17,
+                                            fontWeight : '600',
+                                            color : '#FF6C44',
+                                            paddingRight : 5
+                                        }}>
+                                            Show All
+                                        </Text>
+                                  </TouchableOpacity>
+                    </View>
+
+                    {/* inner horizontal ScrollView 2 */}
+
+                    <View>
+                                <ScrollView
+                                horizontal={true}
+                                >
+                                    {/* Card View */}
+                                    <View style = {{
+                                        backgroundColor : '#DDDDDD',
+                                        width : 250,
+                                        height : 250,
+                                        marginTop : 20,
+                                        borderRadius : 15,
+                                        marginRight : 20
+
+                                    }}> 
+
+                                    <View style = {{
+                                        flexDirection : 'row',
+                                        justifyContent : 'center',
+                                        alignItems : 'baseline',
+                                    }}>
+                                                            <Icon name="fire" size={18} color="#FF6C44" />
+                                                            <View style = {{
+                                                                marginLeft : 10,
+                                                                marginTop : 10
+                                                            }}>
+                                                                
+                                                            <Text style = {{
+                                                                            fontSize : 17,
+                                                                            fontWeight : '600',
+                                                                            color : '#000000',
+                                                                }}>78 Calories
+                                                                
+                                                                </Text>
+
+                                                            </View>
+
+
+                                    </View>
+
+                                    {/* view for image */}
+
+                                    <TouchableOpacity>
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        marginTop : 20
+                                    }}>
+                                    <Image source={cake4} style={{
+                                                                    width:150,
+                                                                    height:120,
+                                                                    borderRadius: 10,
+                                                                    justifyContent : 'center'
+                                                                    }}
+                                      ></Image>
+                                    </View>
+                                    </TouchableOpacity>
+
+
+
+                                    {/* view for price */}
+
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        paddingTop : 15
+                                    }}>
+                                        <View style = {{
+                                            marginBottom :2
+                                        }}>
+                                                        <Text style = {{
+                                                            fontSize : 20,
+                                                            fontWeight : '600',
+                                                            color : 'black'
+                                                        }}>Chocoberry Cupcake</Text>
+                                        </View>
+
+                                        <View>
+                                                        <Text style = {{
+                                                            fontSize : 22,
+                                                            fontWeight : '700',
+                                                            color : 'black'
+                                                        }}>Rs 500.00</Text>
+                                        </View>
+                                     
+                                    </View>
+
+
+
+                                    </View>
+
+
+                                                                        {/* Card View */}
+                                                                        <View style = {{
+                                        backgroundColor : '#DDDDDD',
+                                        width : 250,
+                                        height : 250,
+                                        marginTop : 20,
+                                        borderRadius : 15,
+                                        marginRight : 20
+
+                                    }}> 
+
+                                    <View style = {{
+                                        flexDirection : 'row',
+                                        justifyContent : 'center',
+                                        alignItems : 'baseline',
+                                    }}>
+                                                            <Icon name="fire" size={18} color="#FF6C44" />
+                                                            <View style = {{
+                                                                marginLeft : 10,
+                                                                marginTop : 10
+                                                            }}>
+                                                                
+                                                            <Text style = {{
+                                                                            fontSize : 17,
+                                                                            fontWeight : '600',
+                                                                            color : '#000000',
+                                                                }}>78 Calories
+                                                                
+                                                                </Text>
+
+                                                            </View>
+
+
+                                    </View>
+
+                                    {/* view for image */}
+
+                                    <TouchableOpacity>
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        marginTop : 20
+                                    }}>
+                                    <Image source={cake1} style={{
+                                                                    width:150,
+                                                                    height:120,
+                                                                    borderRadius: 10,
+                                                                    justifyContent : 'center'
+                                                                    }}
+                                      ></Image>
+                                    </View>
+                                    </TouchableOpacity>
+
+
+
+                                    {/* view for price */}
+
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        paddingTop : 15
+                                    }}>
+                                        <View style = {{
+                                            marginBottom :2
+                                        }}>
+                                                        <Text style = {{
+                                                            fontSize : 20,
+                                                            fontWeight : '600',
+                                                            color : 'black'
+                                                        }}>Chocolate Drip Cake</Text>
+                                        </View>
+
+                                        <View>
+                                                        <Text style = {{
+                                                            fontSize : 22,
+                                                            fontWeight : '700',
+                                                            color : 'black'
+                                                        }}>Rs 500.00</Text>
+                                        </View>
+                                     
+                                    </View>
+
+
+
+                                    </View>
+
+
+
+
+                                </ScrollView>
+                     </View>
+
+                     {/* end of the 2nd inner horizontal ScrollView */}
+
+
+                     <View style ={{
+                        flexDirection : 'row',
+                        alignItems : 'baseline',
+                        marginTop : 20
+                    }}>
+                    <Text style = {{
+                        fontSize : 17,
+                        fontWeight : '600',
+                        color : '#000000',
+                        paddingRight : '40%'
+                    }}>
+                      Recommended For You
+                    </Text>
+
+                                  <TouchableOpacity>
+                                  <Text style = {{
+                                            fontSize : 17,
+                                            fontWeight : '600',
+                                            color : '#FF6C44',
+                                            paddingRight : 5
+                                        }}>
+                                            Show All
+                                        </Text>
+                                  </TouchableOpacity>
+                    </View>
+
+                    {/* inner horizontal ScrollView 2 */}
+
+                    <View>
+                                <ScrollView
+                                horizontal={true}
+                                >
+                                                                      {/* Card View */}
+                                    <View style = {{
+                                        backgroundColor : '#DDDDDD',
+                                        width : 250,
+                                        height : 250,
+                                        marginTop : 20,
+                                        borderRadius : 15,
+                                        marginRight : 20,
+                                        marginBottom : 50
+
+                                    }}> 
+
+                                    <View style = {{
+                                        flexDirection : 'row',
+                                        justifyContent : 'center',
+                                        alignItems : 'baseline',
+                                    }}>
+                                                            <Icon name="fire" size={18} color="#FF6C44" />
+                                                            <View style = {{
+                                                                marginLeft : 10,
+                                                                marginTop : 10
+                                                            }}>
+                                                                
+                                                            <Text style = {{
+                                                                            fontSize : 17,
+                                                                            fontWeight : '600',
+                                                                            color : '#000000',
+                                                                }}>84 Calories
+                                                                
+                                                                </Text>
+
+                                                            </View>
+
+
+                                    </View>
+
+                                    {/* view for image */}
+
+                                    <TouchableOpacity>
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        marginTop : 20
+                                    }}>
+                                    <Image source={cake3} style={{
+                                                                    width:150,
+                                                                    height:120,
+                                                                    borderRadius: 10,
+                                                                    justifyContent : 'center'
+                                                                    }}
+                                      ></Image>
+                                    </View>
+                                    </TouchableOpacity>
+
+
+
+                                    {/* view for price */}
+
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        paddingTop : 15
+                                    }}>
+                                        <View style = {{
+                                            marginBottom :2
+                                        }}>
+                                                        <Text style = {{
+                                                            fontSize : 20,
+                                                            fontWeight : '600',
+                                                            color : 'black'
+                                                        }}>Fruits & Cream Cake</Text>
+                                        </View>
+
+                                        <View>
+                                                        <Text style = {{
+                                                            fontSize : 22,
+                                                            fontWeight : '700',
+                                                            color : 'black'
+                                                        }}>Rs 500.00</Text>
+                                        </View>
+                                     
+                                    </View>
+
+
+
+                                    </View>
+
+
+                                                                        {/* Card View */}
+                                                                        <View style = {{
+                                        backgroundColor : '#DDDDDD',
+                                        width : 250,
+                                        height : 250,
+                                        marginTop : 20,
+                                        borderRadius : 15,
+                                        marginRight : 20
+
+                                    }}> 
+
+                                    <View style = {{
+                                        flexDirection : 'row',
+                                        justifyContent : 'center',
+                                        alignItems : 'baseline',
+                                    }}>
+                                                            <Icon name="fire" size={18} color="#FF6C44" />
+                                                            <View style = {{
+                                                                marginLeft : 10,
+                                                                marginTop : 10
+                                                            }}>
+                                                                
+                                                            <Text style = {{
+                                                                            fontSize : 17,
+                                                                            fontWeight : '600',
+                                                                            color : '#000000',
+                                                                }}>92 Calories
+                                                                
+                                                                </Text>
+
+                                                            </View>
+
+
+                                    </View>
+
+                                    {/* view for image */}
+
+                                    <TouchableOpacity>
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        marginTop : 20
+                                    }}>
+                                    <Image source={cake2} style={{
+                                                                    width:150,
+                                                                    height:120,
+                                                                    borderRadius: 10,
+                                                                    justifyContent : 'center'
+                                                                    }}
+                                      ></Image>
+                                    </View>
+                                    </TouchableOpacity>
+
+
+
+                                    {/* view for price */}
+
+                                    <View style = {{
+                                        justifyContent : 'center',
+                                        alignItems : 'center',
+                                        paddingTop : 15
+                                    }}>
+                                        <View style = {{
+                                            marginBottom :2
+                                        }}>
+                                                        <Text style = {{
+                                                            fontSize : 20,
+                                                            fontWeight : '600',
+                                                            color : 'black'
+                                                        }}>Chocolate Chip Cake</Text>
+                                        </View>
+
+                                        <View>
+                                                        <Text style = {{
+                                                            fontSize : 22,
+                                                            fontWeight : '700',
+                                                            color : 'black'
+                                                        }}>Rs 500.00</Text>
+                                        </View>
+                                     
+                                    </View>
+
+
+
+                                    </View>
+
+
+                                </ScrollView>
+                     </View>
+
+
+
+
+
+
+                </ScrollView>
+
+                </View>
+
+
+
+                
+                {/* Footer */}
+                <View>
+
+                <TouchableOpacity style = {{
+                    backgroundColor : '#DDDDDD',
+                    padding : "3%",
+                    borderRadius : 15,
+                }}>
+
+                    <View style = {{
+                        flexDirection : 'row',
+                        alignItems : 'baseline'
+                    }}>
+
+                   {/* home component */}
+                    <View style = {{
+                                    color : "#FBFBFB",
+                                    padding : 10,
+                                    backgroundColor : '#FF6C44',
+                                    borderRadius : 15,
+                                    marginRight : '2%',
+                                    flexDirection : 'row'
+                    }}>
+                        <Icon name="home" size={22} color="#FFFFFF" />
+                                 <Text style ={{
+                                    fontSize : 20,
+                                    fontWeight : '600',
+                                    color : '#FFFFFF',
+                                    marginLeft : 5
+                                    
+                                 }}>
+                                    Home
+                                 </Text>
+
+                    </View>
+
+                    {/* icon component */}
+
+                    <View style = {{
+                        flexDirection : 'row'
+                    }}>
+                        
+                        <View style = {{
+                            paddingLeft : 30
+                        }}>
+                                 <Icon name="search" size={26} color="#000000" />
+                        </View>
+
+                        <View style = {{
+                            paddingLeft : 30
+                        }}>
+                                 <Icon name="heart" size={26} color="#000000" />
+                        </View>
+
+                        <View style = {{
+                            paddingLeft : 30
+                        }}>
+                                 <Icon name="shopping-cart" size={26} color="#000000" />
+                        </View>
+
+                        <View style = {{
+                            paddingLeft : 30
+                        }}>
+                                 <Icon name="bell" size={26} color="#000000" />
+                        </View>
+                        
+
+
+                    </View>
+
+                    </View>
+
+
+                   
+
+                </TouchableOpacity>
+
+
+                </View>
+
+                
+
+                
+
+
+
+
+
 
             </Animated.View>
 
