@@ -282,7 +282,10 @@ const HomeScreen = ({navigation}) => {
                                         backgroundColor : "#DDDDDD",
                                         borderRadius : 15,
                                         marginRight : 20,
-                  }}>
+                                        
+                  }}
+                  
+                  >
 
                                 <View style = {{
                                         flexDirection : 'row',
@@ -417,7 +420,9 @@ const HomeScreen = ({navigation}) => {
 
                                     {/* view for image */}
 
-                                    <TouchableOpacity>
+                                    <TouchableOpacity 
+                                    onPress={() => navigation.navigate('Details')}
+                                    >
                                     <View style = {{
                                         justifyContent : 'center',
                                         alignItems : 'center',
@@ -448,7 +453,7 @@ const HomeScreen = ({navigation}) => {
                                                         <Text style = {{
                                                             fontSize : 20,
                                                             fontWeight : '600',
-                                                            color : 'black'
+                                                            color : '#000000'
                                                         }}>Chocoberry Cupcake</Text>
                                         </View>
 
