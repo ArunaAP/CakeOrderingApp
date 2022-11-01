@@ -9,6 +9,7 @@ import ManagerScreen from './src/screens/Manager/ManagerScreen';
 import CheffScreen from './src/screens/Cheff/CheffScreen';
 import DeliveryScreen from './src/screens/Delivery/DeliveryScreen';
 import ProfileScreen from './src/screens/Profile/ProfileScreen';
+import LoginScreen from './src/screens/Profile/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{headerShown:false}}>
         <Stack.Screen name="Main" component={MainScreen}/>
         <Stack.Screen name="Home" component={HomeScreen}/>
+        <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="Manager" component={ManagerScreen}/>
         <Stack.Screen name="Cheff" component={CheffScreen}/>
         <Stack.Screen name="Delivery" component={DeliveryScreen}/>
