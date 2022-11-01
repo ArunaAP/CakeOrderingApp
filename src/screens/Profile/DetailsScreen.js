@@ -243,7 +243,9 @@ const DetailsScreen = ({navigation}) => {
 
                                     </View>
 
-                                    <TouchableOpacity>
+                                    <TouchableOpacity 
+                                    onPress={() => navigation.navigate('MyCart')}
+                                    >
                                     <View style = {{
                                          flexDirection : 'row',
                                          justifyContent : 'center',
