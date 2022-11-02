@@ -35,10 +35,10 @@ export default function MyCart({navigation}) {
                                 }}>My Cart</Text>
                     </View>
                     <TouchableOpacity
-                   
+                   onPress={() => navigation.navigate('Home')}
                     >
                     <View>
-                                <Icon name="cart-plus" size={35} color="#000000" />
+                                <Icon name="home" size={35} color="#000000" />
                     </View>
                     </TouchableOpacity>
 
@@ -164,12 +164,13 @@ export default function MyCart({navigation}) {
                 }}>Delivery Fee  : Rs  200 . 00</Text>
             </View>
             {/* add horizontal line here */}
+            <View style={styles.separator} />
         </View>
 
         {/* btn Component in footer */}
         
         <View style = {{
-            paddingTop : 20,
+            paddingTop : 10,
             justifyContent : 'center',
             alignContent : 'center',
             alignItems : 'center',
@@ -189,14 +190,17 @@ export default function MyCart({navigation}) {
                 }}>Total    :    Rs 1800</Text>
             </View>
 
-                <TouchableOpacity>
+                <TouchableOpacity
+                 onPress={() => navigation.navigate('CheckoutScreen')}
+                >
                 <View style = {{
                 backgroundColor : "#FF6C44",
                 padding : "2%",
                 paddingLeft : 100,
                 paddingRight : 100,
                 borderRadius : 15
-            }}>
+            }}
+            >
                 
                  <View style = {{
                  
@@ -218,4 +222,11 @@ export default function MyCart({navigation}) {
   )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: '#737373',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginRight : 20,
+      },
+})

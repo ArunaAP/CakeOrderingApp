@@ -13,10 +13,6 @@ import cake5 from '../assets/images/cake5.png'
 import cake6 from '../assets/images/cake6.png'
 
 
-
-
-
-
 const HomeScreen = ({navigation}) => {
     const [currentTab, setCurruntTab] = useState("Home");
     //To get the current status of the menu
@@ -207,7 +203,7 @@ const HomeScreen = ({navigation}) => {
                                 }}>{currentTab}</Text>
                 </View>
                 
-                <TouchableOpacity style = {{
+                <View style = {{
                     backgroundColor : '#DDDDDD',
                     padding : "4%",
                     borderRadius : 15
@@ -228,7 +224,7 @@ const HomeScreen = ({navigation}) => {
                         </View>
 
     
-                </TouchableOpacity>
+                </View>
 
                 {/* scroll view div */}
 
@@ -295,6 +291,7 @@ const HomeScreen = ({navigation}) => {
                                                 <Text style = {{
                                                     fontSize : 19,
                                                     fontWeight : '600',
+                                                    color : '#000000'
                                                     
                                                 }}>
                                                     Chocolate Cup Cake
@@ -329,6 +326,7 @@ const HomeScreen = ({navigation}) => {
                                                 <Text style = {{
                                                     fontSize : 19,
                                                     fontWeight : '600',
+                                                    color : '#000000'
                                                     
                                                 }}>
                                                     Vanilla Cup Cake
@@ -792,7 +790,7 @@ const HomeScreen = ({navigation}) => {
                 {/* Footer */}
                 <View>
 
-                <TouchableOpacity style = {{
+                <View style = {{
                     backgroundColor : '#DDDDDD',
                     padding : "3%",
                     borderRadius : 15,
@@ -802,8 +800,8 @@ const HomeScreen = ({navigation}) => {
                         flexDirection : 'row',
                         alignItems : 'baseline'
                     }}>
-
-                   {/* home component */}
+                        <TouchableOpacity>
+                                               {/* home component */}
                     <View style = {{
                                     color : "#FBFBFB",
                                     padding : 10,
@@ -824,6 +822,9 @@ const HomeScreen = ({navigation}) => {
                                  </Text>
 
                     </View>
+                        </TouchableOpacity>
+
+
 
                     {/* icon component */}
 
@@ -831,29 +832,42 @@ const HomeScreen = ({navigation}) => {
                         flexDirection : 'row'
                     }}>
                         
-                        <View style = {{
-                            paddingLeft : 30
-                        }}>
-                                 <Icon name="search" size={26} color="#000000" />
-                        </View>
+                        <TouchableOpacity>
+                                        <View style = {{
+                                            paddingLeft : 30
+                                        }}>
+                                                <Icon name="search" size={26} color="#000000" />
+                                        </View>
+                        </TouchableOpacity>
 
+                        <TouchableOpacity
+                          onPress={() => navigation.navigate('MyProfile')}
+                        >
                         <View style = {{
                             paddingLeft : 30
                         }}>
                                  <Icon name="heart" size={26} color="#000000" />
                         </View>
+                         </TouchableOpacity>
 
+                         <TouchableOpacity
+                         onPress={() => navigation.navigate('MyCart')}>
                         <View style = {{
                             paddingLeft : 30
                         }}>
                                  <Icon name="shopping-cart" size={26} color="#000000" />
                         </View>
+                            </TouchableOpacity>
 
+                        <TouchableOpacity
+                        onPress={() => navigation.navigate('Notification')}
+                        >
                         <View style = {{
                             paddingLeft : 30
                         }}>
                                  <Icon name="bell" size={26} color="#000000" />
                         </View>
+                            </TouchableOpacity>
                         
 
 
@@ -864,18 +878,10 @@ const HomeScreen = ({navigation}) => {
 
                    
 
-                </TouchableOpacity>
+                </View>
 
 
                 </View>
-
-                
-
-                
-
-
-
-
 
 
             </Animated.View>
