@@ -12,6 +12,12 @@ import ProfileScreen from './src/screens/Profile/ProfileScreen';
 import LoginScreen from './src/screens/Profile/LoginScreen';
 import DetailsScreen from './src/screens/Profile/DetailsScreen';
 import MyCart from './src/screens/Profile/MyCart';
+import CheckoutScreen from './src/screens/Profile/CheckoutScreen';
+import AddCardScreen from './src/screens/Profile/AddCardScreen';
+import Payment from './src/screens/Profile/Payment';
+import Notification from './src/screens/Profile/Notification';
+import MyProfile from './src/screens/Profile/MyProfile';
+import AddProfile from './src/screens/Profile/AddProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +32,12 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen}/>
         <Stack.Screen name="Details" component={DetailsScreen}/>
         <Stack.Screen name="MyCart" component={MyCart}/>
+        <Stack.Screen name="CheckoutScreen" component={CheckoutScreen}/>
+        <Stack.Screen name="AddCardScreen" component={AddCardScreen}/>
+        <Stack.Screen name="Payment" component={Payment}/>
+        <Stack.Screen name="Notification" component={Notification}/>
+        <Stack.Screen name="MyProfile" component={MyProfile}/>
+        <Stack.Screen name="AddProfile" component={AddProfile}/>
         <Stack.Screen name="Manager" component={ManagerScreen}/>
         <Stack.Screen name="Cheff" component={CheffScreen}/>
         <Stack.Screen name="Delivery" component={DeliveryScreen}/>
