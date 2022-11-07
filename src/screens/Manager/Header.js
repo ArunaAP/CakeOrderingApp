@@ -1,18 +1,17 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 
-import {COLORS,FONTS,SIZES,icons,dummyData} from '../../constants';
+import {COLORS} from '../../constants';
 
 import logo from '../../assets/images/cake_icon.png'
-import menu from '../../assets/images/menu.png'
 import BackIcon from '../../assets/images/backIcon.png'
 
 export default function Header({navigation}) {
   return (
-    <View style={styles.container}>
+    <View style={styles.Headercontainer}>
       <TouchableOpacity 
-      onClick={() => navigation.navigate('Home')}
-      style={styles.icon}>
+      onPress={() => navigation.goBack()}
+      style={styles.Headericon}>
         <Image source={BackIcon} style={styles.menuIcn}/>
       </TouchableOpacity>
       <View style={styles.logoView}>
@@ -24,7 +23,7 @@ export default function Header({navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container:{
+    Headercontainer:{
       backgroundColor:COLORS.white,
         width:'100%',
         height:'10%',
@@ -32,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         padding:20
     },
-    icon:{
+    Headericon:{
         width:10,
         height:10,
         position:'absolute',
