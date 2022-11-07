@@ -1,10 +1,23 @@
 import React from "react";
-import { Text, StyleSheet, View , Image , TextInput, TouchableOpacity } from 'react-native'
+import { Text, StyleSheet, View , Image , TextInput, TouchableOpacity, Button } from 'react-native'
 import cake_icon from './Pics/cake_icon.png'
+import { ref, set } from "firebase/database";  //import firebase configuration file 
+import { db } from "../../components/config";
+
 
 const LoginScreen = ({navigation}) => {
 
-    const [text, onChangeText] = React.useState("");
+    const [Email, onChangeEmail] = React.useState("");
+    const [Name, onChangeName] = React.useState("");
+    const [Password, onChangePassword] = React.useState("");
+
+       function create ()  {
+         set(ref(db, 'users/' + Name), {
+             Email: Email,
+             Name: Name,
+             Password : Password
+           });
+     }
 
 
   return (
@@ -15,6 +28,7 @@ const LoginScreen = ({navigation}) => {
           alignItems : 'center',
           justifyContent : 'center'
       }}>
+    
   <Image source={cake_icon} style={{
       width:90,
       height:90,
@@ -76,8 +90,8 @@ const LoginScreen = ({navigation}) => {
 
                                             <TextInput
                                                     style={styles.input}
-                                                    onChangeText={onChangeText}
-                                                    value={text}
+                                                    onChangeText={(Email)  => {onChangeEmail(Email)} }
+                                                    value={Email}
                                                 />
 
                             {/* user name */}
@@ -95,8 +109,8 @@ const LoginScreen = ({navigation}) => {
 
                                                     <TextInput
                                                             style={styles.input}
-                                                            onChangeText={onChangeText}
-                                                            value={text}
+                                                            onChangeText={(Name) => {onChangeName(Name)}}
+                                                            value={Name}
                                                         />
 
                                         {/* password                 */}
@@ -113,9 +127,10 @@ const LoginScreen = ({navigation}) => {
                                                     </View>
 
                                                     <TextInput
+                                                            cureTextEntry={true}
                                                             style={styles.input}
-                                                            onChangeText={onChangeText}
-                                                            value={text}
+                                                            onChangeText={(Password) => {onChangePassword(Password)}}
+                                                            value={Password}
                                                         />
 
                           </View>
@@ -136,9 +151,9 @@ const LoginScreen = ({navigation}) => {
                                         justifyContent : 'center',
                                         borderRadius : 15,
 
-
                                     }}
-                                    onPress={() => navigation.navigate('Home')}
+                                     onPress={() => navigation.navigate('Home')}
+                                    //  onPress = {create}
                                     >
                                         <Text style = {{
                                             color : "#FFFFFF",
