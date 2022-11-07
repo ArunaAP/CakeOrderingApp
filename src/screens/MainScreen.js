@@ -1,21 +1,38 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity,Image } from 'react-native'
 import React from 'react'
+import cake_icon from './Profile/Pics/cake_icon.png'
+
 
 const MainScreen = ({navigation}) => {
   return (
     <View style={{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        backgroundColor : '#FDDED4'
     }}>
-      <Text>MainScreen</Text>
+
+                                               <Image source={cake_icon} style={{
+                                                    width:300,
+                                                    height:300,
+                                                    borderRadius: 100,
+                                                  
+                                                    }}
+                                                ></Image>
+
+        
+        <Text style = {{
+          fontSize : 50,
+          fontWeight : '600',
+          color : '#000000'
+        }}>Eat Me</Text>
         <TouchableOpacity 
-        onPress={() => navigation.navigate('Home')}
+        onPress={() => navigation.navigate('Login')}
         style={{
-            backgroundColor:'#A74AC7',
+            backgroundColor:'#FF6C44',
             padding:10,
             width:'80%',
-            borderRadius:30,
+            borderRadius:20,
             justifyContent:'space-between',
             alignItems:'center',
             flexDirection:'row',
@@ -35,6 +52,7 @@ const MainScreen = ({navigation}) => {
         </TouchableOpacity>
 
     </View>
+    
   )
 }
 
