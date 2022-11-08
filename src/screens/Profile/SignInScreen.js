@@ -1,35 +1,18 @@
 import { StyleSheet, Text, View ,TouchableOpacity, TextInput } from 'react-native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { ref, set,onValue , update} from "firebase/database";  //import firebase configuration file 
+import { ref, set,onValue } from "firebase/database";  //import firebase configuration file 
 import { db } from "../../components/config";
 
+export default function SignInScreen({navigation}) {
 
-export default function AddProfile({navigation}) {
-
-    const [Name , setName] = React.useState("Namal Tharindu");
+    const [Name , setName] = React.useState("");
     const [Phone , setPhone] = React.useState("");
     const [Email , setEmail] = React.useState("");
     const [Address , setAddress] = React.useState("");
 
-    function read(){
-        const starCountRef = ref(db, 'users/' + Name );
-        onValue(starCountRef, (snapshot) => {
-        const data = snapshot.val();
-        
-        setName(data.Name)
-        setPhone(data.Phone)
-        setEmail(data.Email)
-        setAddress(data.Address)
-
-        });
-     }
-     useEffect(()=>{
-        read();
-    },[])
-
-    function updateUser(){
-        update(ref(db, 'users/' + Name), {
+    function create ()  {
+        set(ref(db, 'users/' + Name), {
             Name: Name,
             Phone: Phone,
             Email : Email,
@@ -38,7 +21,7 @@ export default function AddProfile({navigation}) {
     }
 
   return (
-    <View style = {{
+     <View style = {{
         justifyContent:'flex-start',
         padding:15,
         backgroundColor : '#FFFFFF',
@@ -62,7 +45,7 @@ export default function AddProfile({navigation}) {
                                     fontSize : 30,
                                     fontWeight : '600',
                                     color : '#000000'
-                                }}>My Account</Text>
+                                }}>Create Account</Text>
                     </View>
 
                     <View style = {{
@@ -84,7 +67,7 @@ export default function AddProfile({navigation}) {
                                         <View style = {{
                                                 marginLeft : 12,
                                                 marginTop :20
-                                             
+
                                             }}>
                                                 <Text style = {{
                                                     fontSize : 23,
@@ -95,6 +78,7 @@ export default function AddProfile({navigation}) {
 
                                             <TextInput
                                                     style={styles.input}
+                                                    onChangeText={(Name)  => {setName(Name)} }
                                                     value={Name}
                                                 />
                                          {/* Phone Number */}
@@ -112,7 +96,7 @@ export default function AddProfile({navigation}) {
 
                                             <TextInput
                                                     style={styles.input}
-                                                    onChangeText={setPhone}
+                                                    onChangeText={(Phone)  => {setPhone(Phone)} }
                                                     value={Phone}
                                                 />
                                   
@@ -131,7 +115,7 @@ export default function AddProfile({navigation}) {
 
                                             <TextInput
                                                     style={styles.input}
-                                                    onChangeText={setEmail}
+                                                    onChangeText={(Email)  => {setEmail(Email)} }
                                                     value={Email}
                                                 />
                                       {/* Adress */}
@@ -149,7 +133,7 @@ export default function AddProfile({navigation}) {
 
                                             <TextInput
                                                     style={styles.input}
-                                                    onChangeText={setAddress}
+                                                    onChangeText={(Address)  => {setAddress(Address)} }
                                                     value={Address}
                                                 />
               </View>
@@ -161,7 +145,7 @@ export default function AddProfile({navigation}) {
 }}>
 <TouchableOpacity
 onPress={() => navigation.navigate('Home')}
-onPressIn={updateUser}
+onPressIn= {create}
  style = {{
    marginTop : "30%"
  }}

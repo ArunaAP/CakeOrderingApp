@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, StyleSheet, View , Image , TextInput, TouchableOpacity, Button } from 'react-native'
 import cake_icon from './Pics/cake_icon.png'
-import { ref, set } from "firebase/database";  //import firebase configuration file 
+import { ref, set,onValue } from "firebase/database";  //import firebase configuration file 
 import { db } from "../../components/config";
 
 
@@ -17,6 +17,15 @@ const LoginScreen = ({navigation}) => {
              Name: Name,
              Password : Password
            });
+     }
+
+     function read(){
+        const starCountRef = ref(db, 'users/' + Name );
+        onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        onChangeEmail(data.Email)
+        onChangePassword(data.Password)
+        });
      }
 
 
@@ -152,8 +161,8 @@ const LoginScreen = ({navigation}) => {
                                         borderRadius : 15,
 
                                     }}
-                                     onPress={() => navigation.navigate('Home')}
-                                    //  onPress = {create}
+                                      onPress={() => navigation.navigate('Home')}
+                                     onPressIn = {create}
                                     >
                                         <Text style = {{
                                             color : "#FFFFFF",
@@ -184,6 +193,7 @@ const LoginScreen = ({navigation}) => {
                             </View>
                             <View>
                                 <TouchableOpacity    
+                                  onPress={() => navigation.navigate('SignInScreen')}
                                 >
                                 <Text style = {{
                                                              fontSize : 20,
