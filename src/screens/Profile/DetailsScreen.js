@@ -1,10 +1,20 @@
 import { StyleSheet, Text, View , TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import cake4 from './Pics/cake4.jpg'
 
 
 const DetailsScreen = ({navigation}) => {
+
+    const [counter, setCounter] = useState(1);
+    const incrementCounter = () => setCounter(counter + 1);
+    let decrementCounter = () => setCounter(counter - 1);
+    if(counter<=0) {
+      decrementCounter = () => setCounter(1);
+    }
+
+
+
   return (
     <View style = {{
         justifyContent:'flex-start',
@@ -225,7 +235,8 @@ const DetailsScreen = ({navigation}) => {
                                          marginRight : 25                             
                                     }}>
 
-                                                <TouchableOpacity>
+                                                <TouchableOpacity
+                                                onPress={decrementCounter}>
                                                     <Text style = {{
                                                         fontSize : 50
                                                     }}> - </Text>
@@ -233,9 +244,11 @@ const DetailsScreen = ({navigation}) => {
 
                                                 <Text style = {{
                                                     fontSize : 40
-                                                }}> 1 </Text>
+                                                }}>{counter}</Text>
 
-                                                <TouchableOpacity>
+                                                <TouchableOpacity
+                                                onPress={incrementCounter}
+                                                >
                                                     <Text style = {{
                                                           fontSize : 40
                                                     }}> + </Text>
