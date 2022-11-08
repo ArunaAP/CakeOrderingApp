@@ -14,6 +14,7 @@ import DetailsScreen from './src/screens/Profile/DetailsScreen';
 import MyCart from './src/screens/Profile/MyCart';
 import CheckoutScreen from './src/screens/Profile/CheckoutScreen';
 import AddCardScreen from './src/screens/Profile/AddCardScreen';
+import SignInScreen from './src/screens/Profile/SignInScreen';
 import Payment from './src/screens/Profile/Payment';
 import Notification from './src/screens/Profile/Notification';
 import MyProfile from './src/screens/Profile/MyProfile';
@@ -37,6 +38,7 @@ const App = () => {
         <Stack.Screen name="Payment" component={Payment}/>
         <Stack.Screen name="Notification" component={Notification}/>
         <Stack.Screen name="MyProfile" component={MyProfile}/>
+        <Stack.Screen name="SignInScreen" component={SignInScreen}/>
         <Stack.Screen name="AddProfile" component={AddProfile}/>
         <Stack.Screen name="Manager" component={ManagerScreen}/>
         <Stack.Screen name="Cheff" component={CheffScreen}/>

@@ -1,8 +1,31 @@
 import { StyleSheet, Text, View ,TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { ref, set,onValue } from "firebase/database";  //import firebase configuration file 
+import { db } from "../../components/config";
 
 export default function MyProfile({navigation}) {
+
+    const [Name , setName] = React.useState("Namal Tharindu");
+    const [Phone , setPhone] = React.useState("");
+    const [Email , setEmail] = React.useState("");
+    const [Address , setAddress] = React.useState("");
+
+    function read(){
+        const starCountRef = ref(db, 'users/' + Name );
+        onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        
+        setName(data.Name)
+        setPhone(data.Phone)
+        setEmail(data.Email)
+        setAddress(data.Address)
+
+        });
+     }
+     useEffect(()=>{
+        read();
+    },[])
 
     const Separator = () => (
         <View style={styles.separator} />
@@ -80,7 +103,7 @@ export default function MyProfile({navigation}) {
                                                 fontSize : 20,
                                                 fontWeight : '600',
                                                 color : '#000000',
-                    }}>Namal</Text>
+                    }}>{Name}</Text>
                 </View>
             </View>
             <Separator />
@@ -106,7 +129,7 @@ export default function MyProfile({navigation}) {
                                                 fontSize : 20,
                                                 fontWeight : '600',
                                                 color : '#000000',
-                    }}>12365</Text>
+                    }}>EM1203654</Text>
                 </View>
             </View>
             <Separator />
@@ -132,7 +155,7 @@ export default function MyProfile({navigation}) {
                                                 fontSize : 20,
                                                 fontWeight : '600',
                                                 color : '#000000',
-                    }}>0772417049</Text>
+                    }}>{Phone}</Text>
                 </View>
             </View>
             <Separator />
@@ -158,7 +181,7 @@ export default function MyProfile({navigation}) {
                                                 fontSize : 20,
                                                 fontWeight : '600',
                                                 color : '#000000',
-                    }}>Namal@gmail.com</Text>
+                    }}>{Email}</Text>
                 </View>
             </View>
             <Separator />
@@ -184,7 +207,7 @@ export default function MyProfile({navigation}) {
                                                 fontSize : 20,
                                                 fontWeight : '600',
                                                 color : '#000000',
-                    }}>Kegalle</Text>
+                    }}>{Address}</Text>
                 </View>
             </View>
             <Separator />
