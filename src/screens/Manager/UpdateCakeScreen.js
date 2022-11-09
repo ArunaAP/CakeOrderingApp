@@ -1,22 +1,58 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import {COLORS,FONTS,SIZES,icons,dummyData} from '../../constants';
 
 import logo from '../../assets/images/cake_icon.png'
 import BackIcon from '../../assets/images/backIcon.png'
+import { onValue, ref, update } from 'firebase/database';
+import { db } from "../../components/config";
 
 export default function UpdateCakeScreen({navigation}) {
+
+    const [CakeName , setCakeName] = React.useState("Cake1");
+    const [CakeDesc , setCakeDesc] = React.useState("");
+    const [Ingredients , setIngredients] = React.useState("");
+    const [Price , setPrice] = React.useState("");
+
+    // read cake details
+    function read(){
+        const starCountRef = ref(db, 'cakes/' + CakeName );
+        onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        
+        setCakeName(data.CakeName)
+        setCakeDesc(data.CakeDesc)
+        setIngredients(data.Ingredients)
+        setPrice(data.Price)
+
+        });
+     }
+     useEffect(()=>{
+        read();
+    },[])
+
+    // update cake function
+    function updateCakes(){
+        update(ref(db, 'cakes/' + CakeName), {
+            CakeName: CakeName,
+            CakeDesc: CakeDesc,
+            Ingredients : Ingredients,
+            Price : Price
+          });
+    }
+
   return (
     <View>
       {/* Header Section start*/}
 
       <View style={styles.Headercontainer}>
       <TouchableOpacity 
-      onPress={() => navigation.goBack()}
-      style={styles.Headericon}>
+        onPress={() => navigation.goBack()}
+        style={styles.Headericon}>
         <Image source={BackIcon} style={styles.menuIcn}/>
       </TouchableOpacity>
+      
       <View style={styles.logoView}>
         <Image source={logo} style={styles.logoImg}/>
         <Text style={styles.logoTxt}>EatMe</Text>
@@ -35,24 +71,26 @@ export default function UpdateCakeScreen({navigation}) {
                 </View>
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Cake Name</Text>
-                    <TextInput  style={styles.textInput}></TextInput>
+                    <TextInput value={CakeName} style={styles.textInput}></TextInput>
                 </View>
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Description</Text>
-                    <TextInput  style={styles.textInput}></TextInput>
+                    <TextInput value={CakeDesc} onChangeText={setCakeDesc} style={styles.textInput}></TextInput>
                 </View>
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Ingredients</Text>
-                    <TextInput  style={styles.textInput}></TextInput>
+                    <TextInput value={Ingredients} onChangeText={setIngredients}  style={styles.textInput}></TextInput>
                 </View>
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Price</Text>
-                    <TextInput  style={styles.textInput}></TextInput>
+                    <TextInput value={Price} onChangeText={setPrice} style={styles.textInput}></TextInput>
                 </View> 
             
             </View>
             <View style={styles.btnView}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity 
+            onPress={updateCakes}
+            style={styles.button}>
                 <Text style={styles.btnText}>Update Cake</Text>
             </TouchableOpacity>
             </View>

@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity,ScrollView, Alert, Image } from 'react-native'
 import React from 'react'
-import Header from './Header';
 
 import {COLORS,FONTS,SIZES,icons,dummyData} from '../../constants';
 import logo from '../../assets/images/cake_icon.png'
 import BackIcon from '../../assets/images/backIcon.png'
+
+//import firebase configuration file 
+import { ref, set,onValue , update} from "firebase/database";  
+import { db } from "../../components/config";
 
 export default function AddCakeScreen({navigation}) {
 
@@ -26,6 +29,23 @@ export default function AddCakeScreen({navigation}) {
             ]
         )
     }
+
+    const [CakeName , setCakeName] = React.useState("");
+    const [CakeDesc , setCakeDesc] = React.useState("");
+    const [Ingredients , setIngredients] = React.useState("");
+    const [Price , setPrice] = React.useState("");
+
+
+//Create new cake function
+    function create ()  {
+        set(ref(db, 'cakes/' + CakeName), {
+            CakeName: CakeName,
+            CakeDesc: CakeDesc,
+            Ingredients : Ingredients,
+            Price : Price
+          });
+    }
+
 
   return (
     <View>
@@ -55,26 +75,51 @@ export default function AddCakeScreen({navigation}) {
                 </View>
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Cake Name</Text>
-                    <TextInput placeholder='Enter cake name' style={styles.textInput}></TextInput>
+                    <TextInput 
+                        placeholder='Enter cake name' 
+                        style={styles.textInput}
+                        onChangeText={(CakeName)  => {setCakeName(CakeName)} }
+                        value={CakeName}>   
+                    </TextInput>
                 </View>
+
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Description</Text>
-                    <TextInput placeholder='Enter description' style={styles.textInput}></TextInput>
+                    <TextInput 
+                        placeholder='Enter description' 
+                        style={styles.textInput}
+                        onChangeText={(CakeDesc)  => {setCakeDesc(CakeDesc)} }
+                        value={CakeDesc}>
+                    </TextInput>
                 </View>
+
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Ingredients</Text>
-                    <TextInput placeholder='Enter ingredients' style={styles.textInput}></TextInput>
+                    <TextInput 
+                        placeholder='Enter ingredients' 
+                        style={styles.textInput}
+                        onChangeText={(Ingredients)  => {setIngredients(Ingredients)} }
+                        value={Ingredients}>
+                    </TextInput>
                 </View>
+
                 <View style={styles.inputView}>
                     <Text style={styles.label}>Price</Text>
-                    <TextInput placeholder='RS.00.00' style={styles.textInput}></TextInput>
+                    <TextInput 
+                        placeholder='RS.00.00' 
+                        style={styles.textInput}
+                        onChangeText={(Price)  => {setPrice(Price)} }
+                        value={Price}>
+                    </TextInput>
                 </View> 
             
             </View>
             <View style={styles.btnView}>
             <TouchableOpacity 
-            onPress={simpleAlert}
-            style={styles.button}>
+                onPress={simpleAlert}
+                onPressIn={create}
+                style={styles.button}>
+
                 <Text style={styles.btnText}>Add Cake</Text>
             </TouchableOpacity>
             </View>

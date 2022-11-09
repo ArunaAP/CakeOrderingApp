@@ -1,15 +1,42 @@
 import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import {COLORS,FONTS,SIZES,icons,dummyData} from '../../constants';
 
 import logo from '../../assets/images/cake_icon.png'
 import BackIcon from '../../assets/images/backIcon.png'
+import { onValue, ref } from 'firebase/database';
+import { db } from "../../components/config";
 
 export default function CakeItemList({navigation}) {
 
+  const [CakeName , setCakeName] = React.useState("Cake1");
+  const [CakeDesc , setCakeDesc] = React.useState("");
+  const [Ingredients , setIngredients] = React.useState("");
+  const [Price , setPrice] = React.useState("");
+  
+
+  // read cake details
+  function read(){
+      const starCountRef = ref(db, 'cakes/' + CakeName );
+      onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      
+      setCakeName(data.CakeName)
+      setCakeDesc(data.CakeDesc)
+      setIngredients(data.Ingredients)
+      setPrice(data.Price)
+
+      });
+   }
+   useEffect(()=>{
+      read();
+  },[])
+
+
+
   const [cakes, setCakes] = useState([
-    {name: 'Choco Strawberry Cake', desc:'description',price:'1000', image:require("../../assets/images/cake1.jpg"), key: '1'},
+    {name: CakeName, desc: CakeDesc, price: Price, image:require("../../assets/images/cake1.jpg"), key: '1'},
     {name: 'Yellow Butter Cake', desc:'description',price:'1250', image:require("../../assets/images/cake2.jpg"), key: '2'},
     {name: 'Chocolate Cake', desc:'description',price:'2000', image:require("../../assets/images/cake3.jpg"), key: '3'},
     {name: 'Lava Cake', desc:'description',price:'1500', image:require("../../assets/images/cake4.jpg"), key: '4'},

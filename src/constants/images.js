@@ -3,9 +3,9 @@ const cake1 = require("../assets/images/cake1.jpg")
 const cake2 = require("../assets/images/cake2.jpg")
 const cake3 = require("../assets/images/cake3.jpg")
 const cake4 = require("../assets/images/cake4.jpg")
-const cake5 = require("../assets/images/cake5.jpg")
-const cake6 = require("../assets/images/cake6.jpg")
-const maincake = require("../assets/images/maincake.jpg")
+const cake5 = require("../assets/images/cake5.png")
+const cake6 = require("../assets/images/cake6.png")
+const maincake = require("../assets/images/maincake.png")
 
 export default {
     profile,
